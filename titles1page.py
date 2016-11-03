@@ -15,7 +15,6 @@ page_html = painting_page.text
 soup = BeautifulSoup(page_html, "html.parser")
 
 all_li = soup.find_all("h5")
-all_date = soup.find_all("p")
 
 div = soup.find("div", attrs = {"class":"flex-caption"})
 
@@ -25,6 +24,3 @@ div = soup.find("div", attrs = {"class":"flex-caption"})
 
 for a_li in all_li:
  	print(a_li.text)
-
-for a_date in all_date:
-	print(a_date.text)
