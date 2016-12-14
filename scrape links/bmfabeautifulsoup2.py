@@ -6,9 +6,10 @@ import requests, json
 
 all_urls = []
 current_page = 0
-while current_page <= 403:
+while current_page <= 199:
 
-	url = "http://www.mfa.org/collections/search?search_api_views_fulltext=&page=" + str(current_page) + "&f[0]=field_collections%3A2&f[1]=field_classifications%3A152"
+	url = "http://www.mfa.org/collections/search?search_api_views_fulltext=tsuba&page=" + str(current_page) + "&f[0]=field_classifications%3A152"
+
 	current_page = current_page + 1
 	print("Downloading Page" + str(current_page))
 	search_page = requests.get(url)
@@ -22,8 +23,11 @@ while current_page <= 403:
 
 		a = links.find("a")
 		all_urls.append(a['href'])
-		
-with open('search-results-bmfa.json', 'w') as f:
-    f.write(json.dumps(all_urls,indent=4))
 
+		##to test results
+		#print(json.dumps(all_urls,indent=4))
+		
+with open('search-results-bmfa2.json', 'w') as f:
+	f.write(json.dumps(all_urls,indent=4))
+    
 		#print(a['href'])
